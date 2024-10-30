@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>
-        PRM Partner Super User Personas &amp; Access
-    </description>
+    <description>Badly formatted XML</description>
     <fieldPermissions>
         <editable>false</editable>
-            <field>Account.AWSRegion__c</field>
-            <readable>true</readable>
-    <fieldPermissions>
+        <field>Account.AWSRegion__c</field>
+        <readable>true</readable>
+        <!-- Missing closing tag-->
+
         <editable>true</editable>
         <field>Account.AWSServerRegion__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    </PermissionSet>
+</PermissionSet>
