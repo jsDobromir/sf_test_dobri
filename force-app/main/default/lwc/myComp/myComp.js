@@ -2,11 +2,13 @@ import { LightningElement } from "lwc";
 
 export default class MyComp extends LightningElement {
     connectedCallback() {
-var a = 'not used var'
-    var b = "bad format";
+        var c = "this should be fixed";
+        var b = "bad format";
+        const retStr = c + ", " + b;
+        return retStr;
     }
 
-badFormattedMethod() {
-return "bad format";
+    badFormattedMethod() {
+        return "bad format";
     }
 }

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>
-        PRM Partner Super User Personas &amp; Access
-    </description>
+    <description>Nicely formatted XML</description>
     <fieldPermissions>
         <editable>false</editable>
-            <field>Account.AWSRegion__c</field>
-            <readable>true</readable>
+        <field>Account.AWSRegion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <val>1</val>
         <field>Account.AWSServerRegion__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    </PermissionSet>
+</PermissionSet>
