@@ -6,7 +6,6 @@
         <field>Account.AWSRegion__c</field>
         <readable>true</readable>
         <!-- Missing closing tag-->
-
         <editable>true</editable>
         <field>Account.AWSServerRegion__c</field>
         <readable>true</readable>
