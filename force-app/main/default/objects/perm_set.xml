@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>Badly formatted XML</description>
+    <description>Nicely formatted XML</description>
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.AWSRegion__c</field>
         <readable>true</readable>
-        <!-- Extra closing tag-->
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
