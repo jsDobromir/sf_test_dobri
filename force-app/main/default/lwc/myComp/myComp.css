@@ -1,4 +1,8 @@
-html {
-    background-color: red;
-    color: blue;
+:host {
+    width: 100%;
+    height: 100%;
+}
+
+div {
+    font-size: 2rem;
 }

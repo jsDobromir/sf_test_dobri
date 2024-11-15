@@ -7,5 +7,5 @@
 .sfdx
 .sf
 .vscode
-
+/force-app/main/default/labels/CustomLabels.labels-meta.xml
 coverage/
