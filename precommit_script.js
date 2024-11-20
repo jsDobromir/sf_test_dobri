@@ -72,10 +72,10 @@ exec(
                     const match = line.match(regex);
                     console.log(match);
                     if (match && match[1] === "Passed") {
-                        console.log(`Test result: ${match[1]}`); // Output: "Passed"
+                        console.log(`Test result passed: ${match[1]}`); // Output: "Passed"
                         process.exit(0);
                     } else if (match && match[1] === "Failed") {
-                        console.log(`Test result: ${match[1]}`);
+                        console.log(`Test result failed: ${match[1]}`);
                         process.exit(1);
                     }
                 }
