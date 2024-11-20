@@ -54,6 +54,7 @@ exec(
             console.log(testClassesArray.join(","));
             const testCommand = `sfdx force:apex:test:run --classnames ${testClassesArray.join(",")} --resultformat human --synchronous`;
             exec(testCommand, (error, stdout, stderr) => {
+                console.log("output");
                 console.log(stdout);
                 const isWarning = stderr && stderr.includes("Warning:");
                 console.log(stderr.length);
