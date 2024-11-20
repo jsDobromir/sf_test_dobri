@@ -1,5 +1,5 @@
 @isTest
-public with sharing class BackendClassTest {
+public class BackendClassTest {
     @isTest
     public static void testMethod1() {
         Test.startTest();

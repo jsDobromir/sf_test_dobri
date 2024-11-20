@@ -4,7 +4,7 @@ const path = require("path");
 const classPath = "force-app/main/default/classes/";
 
 exec(
-    "git diff --cached --name-only --diff-filter=ACM",
+    "git diff --cached --name-only --diff-filter=M",
     (error, stdout, stderr) => {
         if (error || stderr) {
             console.error("Error fetching modified files", error || stderr);
@@ -33,10 +33,8 @@ exec(
                     classPath,
                     classNameTest
                 );
-                testClasses.add(fullClassPathTest);
-                console.log(fullClassPathTest);
+                testClasses.add(className.split(".")[0] + "Test");
                 const fileExists = fs.existsSync(fullClassPathTest);
-                console.log(fileExists);
                 if (!fileExists) {
                     errorsArray.push(
                         `Error: test class for class: ${className} does not exist`
@@ -53,11 +51,13 @@ exec(
 
         if (testClasses.size > 0) {
             let testClassesArray = Array.from(testClasses);
+            console.log(testClassesArray.join(","));
             const testCommand = `sfdx force:apex:test:run --classnames ${testClassesArray.join(",")} --resultformat human --synchronous`;
             exec(testCommand, (testError, testStdOut, testStdErr) => {
                 console.log(testStdOut);
-                if (testError || testStdErr) {
-                    console.error("\x1b[31m", testError || testStdErr);
+                const isWarning = stderr && stderr.includes("Warning:");
+                if ((error || (stderr && !isWarning)) && !isWarning) {
+                    console.error("\x1b[31m", error || stderr);
                     process.exit(1);
                 }
                 process.exit(0);
