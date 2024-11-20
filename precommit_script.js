@@ -10,7 +10,7 @@ exec(
 
         const modifiedFiles = stdout.split("\n").filter(Boolean);
         if (modifiedFiles.length === 0) {
-            console.log("No modified files detected. Skipping.");
+            console.log("No modified files detected. Skipping.files");
             process.exit(0);
         }
     }
