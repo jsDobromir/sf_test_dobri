@@ -33,7 +33,7 @@ exec(
                     classPath,
                     classNameTest
                 );
-                testClasses.add(className.split(".")[0] + "Test");
+                testClasses.add(className.split(".")[0] + "Testa");
                 const fileExists = fs.existsSync(fullClassPathTest);
                 if (!fileExists) {
                     errorsArray.push(

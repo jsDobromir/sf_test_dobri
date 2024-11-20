@@ -1,7 +1,7 @@
 public with sharing class BackendCLass {
     private String var;
     public BackendCLass() {
-        this.var = 'initasdaaaasd';
+        this.var = 'initasdaaasasd';
     }
 
     @AuraEnabled
