@@ -13,6 +13,7 @@ exec(
         }
 
         const modifiedFiles = stdout.split("\n").filter(Boolean);
+        console.log(`modified: ` + modifiedFiles);
         if (modifiedFiles.length === 0) {
             console.log("No modified files detected. Skipping.");
             process.exit(0);
@@ -52,13 +53,17 @@ exec(
 
         if (testClasses.size > 0) {
             let testClassesArray = Array.from(testClasses);
-            console.log(testClassesArray.join(","));
+            console.log(
+                "\x1b[1m",
+                `Running Tests for classes ${testClassesArray.join(",")}`
+            );
             const testCommand = `sfdx force:apex:test:run --classnames ${testClassesArray.join(",")} --resultformat human --synchronous`;
             const testProcess = exec(testCommand, (error, stdout, sdterr) => {
                 if (error) {
                     console.error("\x1b[31m", error);
                     process.exit(1);
                 }
+                console.log(stdout);
             });
             const rl = readline.createInterface({
                 input: testProcess.stdout,
@@ -70,12 +75,14 @@ exec(
                 line = line.trim();
                 if (line.startsWith("Outcome")) {
                     const match = line.match(regex);
-                    console.log(match);
                     if (match && match[1] === "Passed") {
-                        console.log(`Test result passed: ${match[1]}`); // Output: "Passed"
+                        console.log("\x1b[32m", "All tests Passed");
                         process.exit(0);
                     } else if (match && match[1] === "Failed") {
-                        console.log(`Test result failed: ${match[1]}`);
+                        console.error(
+                            "\x1b[31m",
+                            "Test classes failed, commit will not proceed!"
+                        );
                         process.exit(1);
                     }
                 }
