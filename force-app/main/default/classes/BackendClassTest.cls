@@ -5,6 +5,6 @@ public class BackendClassTest {
         Test.startTest();
         String str = BackendCLass.methodName();
         Test.stopTest();
-        System.assertEquals(str, 'History Log');
+        System.assertEquals(str, 'Histasdory Log');
     }
 }
