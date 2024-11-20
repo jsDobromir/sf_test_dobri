@@ -1,4 +1,7 @@
 const { exec } = require("child_process");
+const fs = require("fs");
+const path = require("path");
+const classPath = "force-app/main/default/classes/";
 
 exec(
     "git diff --cached --name-only --diff-filter=ACM",
@@ -16,7 +19,8 @@ exec(
         for (const file of modifiedFiles) {
             if (file.includes("/classes/")) {
                 const className = file.split("/classes/")[1];
-                console.log(className);
+                const fullClassPath = path.resolve(__dirname, classPath);
+                console.log(fullClassPath);
             }
         }
     }
