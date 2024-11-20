@@ -10,8 +10,14 @@ exec(
 
         const modifiedFiles = stdout.split("\n").filter(Boolean);
         if (modifiedFiles.length === 0) {
-            console.log("No modified files detected. Skipping.files");
+            console.log("No modified files detected. Skipping.");
             process.exit(0);
+        }
+        for (const file of modifiedFiles) {
+            if (file.includes("/classes/")) {
+                const className = file.split("/classes/")[1];
+                console.log(className);
+            }
         }
     }
 );

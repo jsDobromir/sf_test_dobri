@@ -1,5 +1,7 @@
 public with sharing class BackendCLass {
+    private String var;
     public BackendCLass() {
+        this.var = 'init';
     }
 
     @AuraEnabled
