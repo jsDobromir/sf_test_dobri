@@ -34,7 +34,7 @@ exec(
                     classPath,
                     classNameTest
                 );
-                testClasses.add(className.split(".")[0] + "Tesst");
+                testClasses.add(className.split(".")[0] + "Test");
                 const fileExists = fs.existsSync(fullClassPathTest);
                 if (!fileExists) {
                     errorsArray.push(
@@ -54,7 +54,12 @@ exec(
             let testClassesArray = Array.from(testClasses);
             console.log(testClassesArray.join(","));
             const testCommand = `sfdx force:apex:test:run --classnames ${testClassesArray.join(",")} --resultformat human --synchronous`;
-            const testProcess = exec(testCommand);
+            const testProcess = exec(testCommand, (error, stdout, sdterr) => {
+                if (error) {
+                    console.error("\x1b[31m", error);
+                    process.exit(1);
+                }
+            });
             const rl = readline.createInterface({
                 input: testProcess.stdout,
                 output: testProcess.stdout,
@@ -62,10 +67,6 @@ exec(
             });
             rl.on("line", (line) => {
                 console.log(`Recived line: ${line}`);
-            });
-            rl.on("error", (error) => {
-                console.error("\x1b[31m", error);
-                process.exit(1);
             });
             rl.on("exit", (code) => {
                 console.log(`Process exited with code ${code}`);
