@@ -15,6 +15,7 @@ export default class MyComp extends LightningElement {
     }
 
     badFormattedMethod() {
-        return "bad format";
+        var a = "string";
+        return `${a}bad format`;
     }
 }
