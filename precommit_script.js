@@ -56,6 +56,7 @@ exec(
             exec(testCommand, (error, stdout, stderr) => {
                 console.log(stdout);
                 const isWarning = stderr && stderr.includes("Warning:");
+                console.log(stderr);
                 if ((error || (stderr && !isWarning)) && !isWarning) {
                     console.error("\x1b[31m", error || stderr);
                     process.exit(1);
