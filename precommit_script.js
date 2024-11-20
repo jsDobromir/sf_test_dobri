@@ -40,7 +40,7 @@ exec(
         }
         if (errorsArray.length > 0) {
             for (const error of errorsArray) {
-                console.log('"\x1b[31m"', error);
+                console.log("\x1b[31m", error);
             }
             process.exit(0);
         }
