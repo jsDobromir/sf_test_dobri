@@ -13,8 +13,5 @@ exec(
             console.log("No modified files detected. Skipping.");
             process.exit(0);
         }
-
-        console.log("Modified files: ", modifiedFiles);
-        process.exit(0);
     }
 );
