@@ -16,12 +16,33 @@ exec(
             console.log("No modified files detected. Skipping.");
             process.exit(0);
         }
+        const errorsArray = new Array();
         for (const file of modifiedFiles) {
             if (file.includes("/classes/")) {
                 const className = file.split("/classes/")[1];
-                const fullClassPath = path.resolve(__dirname, classPath);
-                console.log(fullClassPath);
+                const classNameTest =
+                    className.split(".")[0] +
+                    "Test" +
+                    "." +
+                    className.split(".")[1];
+                const fullClassPathTest = path.resolve(
+                    __dirname,
+                    classPath,
+                    classNameTest
+                );
+                console.log(fullClassPathTest);
+                if (!fs.existsSync(fullClassPathTest)) {
+                    errorsArray.push(
+                        `Error, test class for class: ${className} does not exist`
+                    );
+                }
             }
+        }
+        if (errorsArray.length > 0) {
+            for (const error of errorsArray) {
+                console.log('"\x1b[31m"', error);
+            }
+            process.exit(0);
         }
     }
 );
