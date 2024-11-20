@@ -66,7 +66,19 @@ exec(
                 terminal: false
             });
             rl.on("line", (line) => {
-                console.log(`Recived line: ${line}`);
+                const regex = /\s*(Passed|Failed)$/;
+                line = line.trim();
+                if (line.startsWith("Outcome")) {
+                    const match = line.match(regex);
+                    console.log(match);
+                    if (match && match[1] === "Passed") {
+                        console.log(`Test result: ${match[1]}`); // Output: "Passed"
+                        process.exit(0);
+                    } else if (match && match[1] === "Failed") {
+                        console.log(`Test result: ${match[1]}`);
+                        process.exit(1);
+                    }
+                }
             });
             rl.on("exit", (code) => {
                 console.log(`Process exited with code ${code}`);
