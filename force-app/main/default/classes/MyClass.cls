@@ -1,8 +1,8 @@
-public class MyClass {
-    public static String dummyMethod() {
-        String a = 'bad format';
-        Integer ab = 10;
+public with sharing class MyClass {
+    public MyClass() {
+    }
 
-        return 'someString';
+    private static String method1() {
+        return 'testString';
     }
 }
