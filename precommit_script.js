@@ -53,8 +53,8 @@ exec(
             let testClassesArray = Array.from(testClasses);
             console.log(testClassesArray.join(","));
             const testCommand = `sfdx force:apex:test:run --classnames ${testClassesArray.join(",")} --resultformat human --synchronous`;
-            exec(testCommand, (testError, testStdOut, testStdErr) => {
-                console.log(testStdOut);
+            exec(testCommand, (error, stdout, stderr) => {
+                console.log(stdout);
                 const isWarning = stderr && stderr.includes("Warning:");
                 if ((error || (stderr && !isWarning)) && !isWarning) {
                     console.error("\x1b[31m", error || stderr);
